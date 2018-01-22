@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
+	"io"
 	"os"
 )
 
@@ -20,12 +21,18 @@ func main() {
 	for {
 		record, err := r.Read()
 
+		if err == io.EOF {
+			break
+		}
+
 		if err != nil {
 			fmt.Println("Error:", err)
 			return
 		}
 
-		fmt.Println(record)
+		ques := record[0]
+		ans := record[1]
+		fmt.Printf("\nQuestion: %v Answer: %v", ques, ans)
 	}
 
 }
