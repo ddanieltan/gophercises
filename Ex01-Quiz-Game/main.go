@@ -38,17 +38,18 @@ func main() {
 
 	var score int //default value is 0
 	for i, prob := range problems {
-		fmt.Printf("Question #%s\n%s\n", i, prob.ques)
+		fmt.Printf("Question #%d %s=? ", i, prob.ques)
 		var user_ans string
 		fmt.Scanf("%s\n", &user_ans)
 		if user_ans == prob.ans {
 			fmt.Println("Correct!")
 			score++
+			fmt.Printf("Score: %d/%d\n", score, i+1)
 		} else {
 			fmt.Println("Incorrect!")
+			fmt.Printf("Score: %d/%d\n", score, i+1)
 		}
 
 	}
-	fmt.Printf("You got %d out of %d questions correct", score, len(problems))
 
 }
